@@ -29,9 +29,9 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params) #updateメソッドには変更するストロングパラメータが必要なので（）内を追記
-      #flash[:notice] = "Book was successfully updated."
+      flash[:notice] = "Book was successfully updated."
+      redirect_to book_path(@book.id)
     else
-      #flash[:notice] = "Book was not updated."
       render :edit
     end
   end
